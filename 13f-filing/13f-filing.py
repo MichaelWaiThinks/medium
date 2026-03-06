@@ -30,9 +30,16 @@ def get_request(url):
         'Accept-Encoding': 'gzip, deflate, br',
         'HOST': 'www.sec.gov',
     }
+    
+    headers = {
+     'User-Agent': 'michael lae michael@email.com',
+     'Accept-Encoding': 'gzip, deflate',
+     'Host': 'www.sec.gov'
+    }
+        
     # headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36' ,'HOST': 'www.sec.gov'}
-    print(f'requestiing {url} and wait 5 sec...')
-    time.sleep(5)
+    print(f'requestiing {url} and wait 3 sec...')
+    time.sleep(3)
     return requests.get(url, headers=headers)
 
 def create_url(cik):
@@ -48,10 +55,8 @@ def get_user_input():
 def scrap_company_report(requested_cik):
     # Find mutual fund by CIK number on EDGAR
     response = get_request(create_url(requested_cik))
-    print(response.content.decode())
     soup = BeautifulSoup(response.text, "html.parser")
     tags = soup.findAll('a', id="documentsbutton")
-    print(tags[0])
     last_report = (sec_url + tags[0]['href'])
     previous_report = (sec_url + tags[1]['href'])
     scrap_report_by_url(last_report, "last_report")
@@ -104,7 +109,9 @@ def xml_to_csv(soup_xml, name):
         )
         df = pd.concat([df,row])
 
-        print ( issuer.text)
+    for i, name in enumerate(df["Name of Issuer"].unique(), 1):
+        print(f"{i}. {name}")    
+    
     print ('saved to ','./'+f"{requested_cik}.csv")
     df.to_csv('./'+f"{requested_cik}.csv")
 
