@@ -1,0 +1,16 @@
+__pycache__/
+*.mp4
+*.png
+*.gif
+*.txt
+*.jpg
+*.log
+*.csv
+*.env
+.secrets
+.secret
+.env
+.DS_Store
+.spyproejct/
+.ipynb_checkpoints/
+
