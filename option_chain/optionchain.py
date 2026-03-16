@@ -19,7 +19,7 @@ from matplotlib.ticker import FuncFormatter
 
 from yahooquery import Ticker # pip install yahooquery
 
-
+TICKER_CODE = 'AMZN'
 today_str=dt.datetime.today().strftime('%Y-%m-%d')
 
 # some handy tools for formatting the chart
@@ -226,7 +226,7 @@ def option_chain(symbol):
     # let's save the chart in current directory
     fig.savefig('./'+symbol+'.jpg',dpi=300,bbox_inches='tight')
 
-option_chain('NVDA')
+option_chain(TICKER_CODE)
 
 """
 #test run

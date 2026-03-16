@@ -1000,7 +1000,7 @@ if __name__ == '__main__':
 
     dir_path='./'+symbol+'.'+today_str
 
-    answer=input('Do you want to download again data? press<enter> if not. ')
+    answer=input('Do you want to download again data? Let me know stock ticker or press<enter> if not. ')
     print ('ok !')
     if answer:
         print ('working:',answer)
