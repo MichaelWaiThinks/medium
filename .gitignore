@@ -13,4 +13,6 @@ __pycache__/
 .DS_Store
 .spyproejct/
 .ipynb_checkpoints/
+secret.py
+*secret*
 
